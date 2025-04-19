@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site oficial para cotação de planos de saúde Bradesco, oferecido pela Pavoni Seguros, revenda autorizada.">
+    <meta name="author" content="Pavoni Seguros">
+    <meta name="robots" content="index, follow">
+    <title>Bradesco Saúde | Pavoni</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            overflow-x: hidden;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 35px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c8102e;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #c8102e;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #c8102e, #e63946);
+            color: #fff;
+            padding: 40px 20px;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"%3E%3Cpath fill="rgba(255,255,255,0.1)" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L0,320Z"%3E%3C/path%3E%3C/svg%3E') no-repeat bottom center;
+            background-size: cover;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            z-index: 1;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero a, .section a, .how-to a, .enterprise a {
+            text-decoration: none;
+        }
+
+        .hero button, .section button, .how-to button, .enterprise button {
+            padding: 16px 36px; /* Aumentado para melhor experiência */
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(45deg, #c8102e, #9b1b6d); /* Gradiente vermelho para roxo */
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero button:hover, .section button:hover, .how-to button:hover, .enterprise button:hover {
+            background: linear-gradient(45deg, #e63946, #b92b82); /* Gradiente ajustado no hover */
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .whatsapp-note {
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0.8;
+        }
+
+        .hero-banner {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-banner img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            transform: rotate(15deg);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: rotate(15deg) translateY(0);
+            }
+            50% {
+                transform: rotate(15deg) translateY(-10px);
+            }
+        }
+
+        .features, .how-to, .enterprise, .testimonials, .quote {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .features h2, .how-to h2, .enterprise h2, .testimonials h2, .quote h2 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .features-grid, .steps {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature-item, .step {
+            max-width: 300px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-item:hover, .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h3, .step h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 15px 0;
+            color: #c8102e;
+        }
+
+        .feature-item p, .step p {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .feature-item::before, .step::before {
+            content: '✔';
+            color: #c8102e;
+            font-size: 24px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .how-to button {
+            margin: 30px auto 0;
+        }
+
+        .section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-text {
+            max-width: 500px;
+            text-align: left;
+        }
+
+        .section-text h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: #c8102e;
+            margin-bottom: 20px;
+        }
+
+        .section-text p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .section-text button {
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .enterprise, .testimonials {
+            background-color: #fff;
+            border-radius: 15px;
+            margin: 20px;
+        }
+
+        .enterprise p, .testimonials p {
+            font-size: 16px;
+            margin-bottom: 25px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .enterprise img {
+            margin-top: 25px;
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .enterprise button {
+            margin: 30px auto 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .testimonial {
+            max-width: 600px;
+            margin: 0 auto;
+            font-style: italic;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .testimonial cite {
+            display: block;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #c8102e;
+        }
+
+        .quote form {
+            display: flex;
+            flex-direction: column;
+            max-width: 500px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .quote input, .quote select {
+            padding: 12px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s ease;
+        }
+
+        .quote input:focus, .quote select:focus {
+            border-color: #c8102e;
+            outline: none;
+        }
+
+        .quote button {
+            background: linear-gradient(45deg, #c8102e, #9b1b6d); /* Gradiente vermelho para roxo */
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .quote button:hover {
+            background: linear-gradient(45deg, #e63946, #b92b82);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .privacy-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #ddd;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        footer a {
+            color: #c8102e;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #e63946;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px;
+                flex-wrap: wrap;
+            }
+
+            .logo img {
+                height: 30px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav {
+                display: none;
+                width: 100%;
+            }
+
+            nav.active {
+                display: block;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: #fff;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                z-index: 999;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul li a {
+                font-size: 16px;
+                display: block;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+
+            .hero {
+                min-height: 80vh;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero button, .section button, .how-to button, .enterprise button {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+
+            .hero-banner {
+                margin-top: 20px;
+                text-align: center;
+            }
+
+            .hero-banner img {
+                max-width: 350px;
+                transform: rotate(0deg);
+            }
+
+            .features h2, .how-to h2, .enterprise h2, .testimonials h2, .quote h2 {
+                font-size: 24px;
+            }
+
+            .features-grid, .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .feature-item, .step {
+                max-width: 90%;
+            }
+
+            .section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-text {
+                text-align: center;
+            }
+
+            .section-text h2 {
+                font-size: 24px;
+            }
+
+            .section-text p {
+                font-size: 14px;
+            }
+
+            .enterprise, .testimonials {
+                margin: 10px;
+            }
+
+            .quote form {
+                max-width: 90%;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .steps {
+                justify-content: space-around;
+            }
+
+            .step {
+                flex: 1;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Bradesco Saúde e Pavoni Seguros Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Início</a></li>
+                <li><a href="#">Sobre</a></li>
+                <li><a href="#">Como contratar</a></li>
+                <li><a href="#">PME</a></li>
+                <li><a href="#">Depoimentos</a></li>
+                <li><a href="#">Contato</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle">☰</div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Bradesco Saúde</h1>
+                <p>Temos o plano perfeito para você, sua família e sua empresa.</p>
+                <a href="https://wa.me/5547996266055?text=Quero%20cotar%20um%20plano" target="_blank" rel="noopener noreferrer">
+                    <button aria-label="Abrir WhatsApp para cotar um plano">
+                        <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                            <path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.032-1.356L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626.225.198.456.387.713.566.499.354 1.023.689 1.553.99.353.197.741.384 1.138.554.135.056.279.108.411.156.133.048.272.096.411.139.338.102.681.185 1.029.244.94.165 1.803-.058 2.392-.644.345-.334.617-.728.785-1.165a.957.957 0 0 0-.129-.879.954.954 0 0 0-.722-.396c-.23-.008-.467-.024-.708-.043l-.774-.105c-.553-.075-1.134-.22-1.778-.435-.318-.107-.628-.218-.92-.335-.564-.226-1.098-.467-1.564-.738-.466-.27-.88-.566-1.222-.904-.344-.338-.627-.707-.847-1.102-.218-.396-.377-.808-.469-1.228a4.13 4.13 0 0 1-.098-.735c0-.274.022-.547.067-.82a1.949 1.949 0 0 1 .252-.723 1.05 1.05 0 0 1 .564-.446c.172-.053.356-.082.546-.082h.001c.177 0 .357.028.535.083.177.056.347.137.504.24.468.31.842.706 1.09 1.181.122.237.194.492.216.76.022.268-.025.54-.141.79-.232.502-.685.902-1.275 1.146a2.952 2.952 0 0 1-.695.252c-.465.123-.95.186-1.432.186-.482 0-.957-.062-1.412-.186a2.955 2.955 0 0 1-.695-.252c-.59-.244-1.043-.644-1.275-1.146a1.544 1.544 0 0 1-.141-.79c.022-.268.094-.523.216-.76.248-.475.622-.871 1.09-1.181a1.146 1.146 0 0 1 .504-.24c.178-.055.358-.083.535-.083z"/>
+                        </svg>
+                        <span>Contrate agora</span>
+                    </button>
+                </a>
+                <p class="whatsapp-note">Entre em contato via WhatsApp para cotar seu plano.</p>
+            </div>
+            <div class="hero-banner">
+                <img src="img/imageapp.png" alt="Banner com celular mostrando app Bradesco Seguros">
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <h2>Benefícios Exclusivos</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>Ampla Rede de Médicos e Laboratórios</h3>
+                <p>Tenha maior conforto e encontre os serviços mais próximos de você em todo o Brasil</p>
+            </div>
+            <div class="feature-item">
+                <h3>Saúde Digital com Telemedicina</h3>
+                <p>Consultas médicas em diversas especialidades, inclusive com psicólogo e nutricionista</p>
+            </div>
+            <div class="feature-item">
+                <h3>Clube+Bradesco Saúde</h3>
+                <p>Ofertas e benefícios exclusivos em lojas on-line e em estabelecimentos conveniados em todo o país</p>
+            </div>
+            <div class="feature-item">
+                <h3>Pague menos em Farmácias</h3>
+                <p>Descontos de até 85% em medicamentos disponíveis em mais de 12 mil farmácias credenciadas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <img src="img/familia.jpg" alt="Bradesco Saúde Sobre Foto">
+        <div class="section-text">
+            <h2>Bradesco Saúde</h2>
+            <p>Com ampla cobertura, rede referenciada com médicos e clínicas e laboratórios de excelência em todo o Brasil, a Bradesco Saúde tem a missão de proteger sua vida, seu futuro e sua saúde.</p>
+            <a href="https://wa.me/5547996266055?text=Quero%20cotar%20um%20plano" target="_blank" rel="noopener noreferrer">
+                <button aria-label="Abrir WhatsApp para cotar um plano">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                        <path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.032-1.356L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626.225.198.456.387.713.566.499.354 1.023.689 1.553.99.353.197.741.384 1.138.554.135.056.279.108.411.156.133.048.272.096.411.139.338.102.681.185 1.029.244.94.165 1.803-.058 2.392-.644.345-.334.617-.728.785-1.165a.957.957 0 0 0-.129-.879.954.954 0 0 0-.722-.396c-.23-.008-.467-.024-.708-.043l-.774-.105c-.553-.075-1.134-.22-1.778-.435-.318-.107-.628-.218-.92-.335-.564-.226-1.098-.467-1.564-.738-.466-.27-.88-.566-1.222-.904-.344-.338-.627-.707-.847-1.102-.218-.396-.377-.808-.469-1.228a4.13 4.13 0 0 1-.098-.735c0-.274.022-.547.067-.82a1.949 1.949 0 0 1 .252-.723 1.05 1.05 0 0 1 .564-.446c.172-.053.356-.082.546-.082h.001c.177 0 .357.028.535.083.177.056.347.137.504.24.468.31.842.706 1.09 1.181.122.237.194.492.216.76.022.268-.025.54-.141.79-.232.502-.685.902-1.275 1.146a2.952 2.952 0 0 1-.695.252c-.465.123-.95.186-1.432.186-.482 0-.957-.062-1.412-.186a2.955 2.955 0 0 1-.695-.252c-.59-.244-1.043-.644-1.275-1.146a1.544 1.544 0 0 1-.141-.79c.022-.268.094-.523.216-.76.248-.475.622-.871 1.09-1.181a1.146 1.146 0 0 1 .504-.24c.178-.055.358-.083.535-.083z"/>
+                    </svg>
+                    <span>Contrate agora</span>
+                </button>
+            </a>
+            <p class="whatsapp-note">Entre em contato via WhatsApp para cotar seu plano.</p>
+        </div>
+    </section>
+
+    <section class="how-to">
+        <h2>Como contratar</h2>
+        <p>É muito fácil contratar o plano de saúde perfeito para as suas necessidades!</p>
+        <div class="steps">
+            <div class="step">
+                <h3>Etapa 1</h3>
+                <p>Entre em contato pelo WhatsApp ou faça uma cotação aqui no site</p>
+            </div>
+            <div class="step">
+                <h3>Etapa 2</h3>
+                <p>Converse com um dos membros de nosso time e conheça todas as opções</p>
+            </div>
+            <div class="step">
+                <h3>Etapa 3</h3>
+                <p>Tire todas as suas dúvidas e contrate a melhor opção para você</p>
+            </div>
+        </div>
+        <a href="https://wa.me/5547996266055?text=Quero%20cotar%20um%20plano" target="_blank" rel="noopener noreferrer">
+            <button aria-label="Abrir WhatsApp para cotar um plano">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                    <path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.032-1.356L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626.225.198.456.387.713.566.499.354 1.023.689 1.553.99.353.197.741.384 1.138.554.135.056.279.108.411.156.133.048.272.096.411.139.338.102.681.185 1.029.244.94.165 1.803-.058 2.392-.644.345-.334.617-.728.785-1.165a.957.957 0 0 0-.129-.879.954.954 0 0 0-.722-.396c-.23-.008-.467-.024-.708-.043l-.774-.105c-.553-.075-1.134-.22-1.778-.435-.318-.107-.628-.218-.92-.335-.564-.226-1.098-.467-1.564-.738-.466-.27-.88-.566-1.222-.904-.344-.338-.627-.707-.847-1.102-.218-.396-.377-.808-.469-1.228a4.13 4.13 0 0 1-.098-.735c0-.274.022-.547.067-.82a1.949 1.949 0 0 1 .252-.723 1.05 1.05 0 0 1 .564-.446c.172-.053.356-.082.546-.082h.001c.177 0 .357.028.535.083.177.056.347.137.504.24.468.31.842.706 1.09 1.181.122.237.194.492.216.76.022.268-.025.54-.141.79-.232.502-.685.902-1.275 1.146a2.952 2.952 0 0 1-.695.252c-.465.123-.95.186-1.432.186-.482 0-.957-.062-1.412-.186a2.955 2.955 0 0 1-.695-.252c-.59-.244-1.043-.644-1.275-1.146a1.544 1.544 0 0 1-.141-.79c.022-.268.094-.523.216-.76.248-.475.622-.871 1.09-1.181a1.146 1.146 0 0 1 .504-.24c.178-.055.358-.083.535-.083z"/>
+                </svg>
+                <span>Contrate agora</span>
+            </button>
+        </a>
+        <p class="whatsapp-note">Entre em contato via WhatsApp para cotar seu plano.</p>
+    </section>
+
+    <section class="enterprise">
+        <h2>Plano Empresarial Bradesco Saúde</h2>
+        <p>Reduza em até 30% os custos com os planos Bradesco PME e ofereça a seus funcionários uma ampla rede de consultórios, clínicas, laboratórios e hospitais, além de possibilitar o reembolso das despesas médicas e hospitalares realizadas por prestadores de sua livre escolha.</p>
+        <img src="img/mulher.jpg" alt="Bradesco Saúde PME Foto">
+        <a href="https://wa.me/5547996266055?text=Quero%20cotar%20um%20plano" target="_blank" rel="noopener noreferrer">
+            <button aria-label="Abrir WhatsApp para cotar um plano">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                    <path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.032-1.356L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626.225.198.456.387.713.566.499.354 1.023.689 1.553.99.353.197.741.384 1.138.554.135.056.279.108.411.156.133.048.272.096.411.139.338.102.681.185 1.029.244.94.165 1.803-.058 2.392-.644.345-.334.617-.728.785-1.165a.957.957 0 0 0-.129-.879.954.954 0 0 0-.722-.396c-.23-.008-.467-.024-.708-.043l-.774-.105c-.553-.075-1.134-.22-1.778-.435-.318-.107-.628-.218-.92-.335-.564-.226-1.098-.467-1.564-.738-.466-.27-.88-.566-1.222-.904-.344-.338-.627-.707-.847-1.102-.218-.396-.377-.808-.469-1.228a4.13 4.13 0 0 1-.098-.735c0-.274.022-.547.067-.82a1.949 1.949 0 0 1 .252-.723 1.05 1.05 0 0 1 .564-.446c.172-.053.356-.082.546-.082h.001c.177 0 .357.028.535.083.177.056.347.137.504.24.468.31.842.706 1.09 1.181.122.237.194.492.216.76.022.268-.025.54-.141.79-.232.502-.685.902-1.275 1.146a2.952 2.952 0 0 1-.695.252c-.465.123-.95.186-1.432.186-.482 0-.957-.062-1.412-.186a2.955 2.955 0 0 1-.695-.252c-.59-.244-1.043-.644-1.275-1.146a1.544 1.544 0 0 1-.141-.79c.022-.268.094-.523.216-.76.248-.475.622-.871 1.09-1.181a1.146 1.146 0 0 1 .504-.24c.178-.055.358-.083.535-.083z"/>
+                </svg>
+                <span>Contrate agora</span>
+            </button>
+        </a>
+        <p class="whatsapp-note">Entre em contato via WhatsApp para cotar seu plano.</p>
+    </section>
+
+    <section class="section">
+        <div class="section-text">
+            <h2>Bradesco Saúde</h2>
+            <p>Não adie mais o momento de proporcionar proteção e tranquilidade para a sua família e os funcionários da sua empresa.</p>
+            <a href="https://wa.me/5547996266055?text=Quero%20cotar%20um%20plano" target="_blank" rel="noopener noreferrer">
+                <button aria-label="Abrir WhatsApp para cotar um plano">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                        <path d="M2.004 22l1.352-4.968A9.954 9.954 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10a9.954 9.954 0 0 1-5.032-1.356L2.004 22zM8.391 7.308a.961.961 0 0 0-.371.1 1.293 1.293 0 0 0-.294.228c-.12.113-.188.211-.261.306A2.729 2.729 0 0 0 6.9 9.62c.002.49.13.967.33 1.413.409.902 1.082 1.857 1.971 2.742.214.213.423.427.648.626.225.198.456.387.713.566.499.354 1.023.689 1.553.99.353.197.741.384 1.138.554.135.056.279.108.411.156.133.048.272.096.411.139.338.102.681.185 1.029.244.94.165 1.803-.058 2.392-.644.345-.334.617-.728.785-1.165a.957.957 0 0 0-.129-.879.954.954 0 0 0-.722-.396c-.23-.008-.467-.024-.708-.043l-.774-.105c-.553-.075-1.134-.22-1.778-.435-.318-.107-.628-.218-.92-.335-.564-.226-1.098-.467-1.564-.738-.466-.27-.88-.566-1.222-.904-.344-.338-.627-.707-.847-1.102-.218-.396-.377-.808-.469-1.228a4.13 4.13 0 0 1-.098-.735c0-.274.022-.547.067-.82a1.949 1.949 0 0 1 .252-.723 1.05 1.05 0 0 1 .564-.446c.172-.053.356-.082.546-.082h.001c.177 0 .357.028.535.083.177.056.347.137.504.24.468.31.842.706 1.09 1.181.122.237.194.492.216.76.022.268-.025.54-.141.79-.232.502-.685.902-1.275 1.146a2.952 2.952 0 0 1-.695.252c-.465.123-.95.186-1.432.186-.482 0-.957-.062-1.412-.186a2.955 2.955 0 0 1-.695-.252c-.59-.244-1.043-.644-1.275-1.146a1.544 1.544 0 0 1-.141-.79c.022-.268.094-.523.216-.76.248-.475.622-.871 1.09-1.181a1.146 1.146 0 0 1 .504-.24c.178-.055.358-.083.535-.083z"/>
+                    </svg>
+                    <span>Contrate agora</span>
+                </button>
+            </a>
+            <p class="whatsapp-note">Entre em contato via WhatsApp para cotar seu plano.</p>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Depoimentos</h2>
+        <p>Saiba o que os nossos clientes falam sobre os planos da Bradesco Saúde:</p>
+        <div class="testimonial">
+            <p>"Sou cliente do Bradesco Saúde há mais de 5 anos e só tenho elogios! Sempre fui muito bem atendido, tanto em consultas quanto em exames, e a rede credenciada é excelente. A segurança de saber que posso contar com um atendimento rápido e eficiente faz toda a diferença."</p>
+            <cite>Carlos A.</cite>
+        </div>
+    </section>
+
+    <section class="quote">
+        <h2>Cotação online</h2>
+        <p>Entre em contato para cotar um plano de saúde confiável numa das maiores operadoras do país.</p>
+        <form action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+            <input type="text" name="nome" placeholder="Nome" required>
+            <input type="email" name="email" placeholder="E-mail" required>
+            <input type="tel" name="telefone" placeholder="Telefone" required>
+            <input type="text" name="cidade" placeholder="Cidade" required>
+            <select name="tipo_plano" required>
+                <option value="">Tipo de Plano</option>
+                <option value="individual">Individual</option>
+                <option value="familiar">Familiar</option>
+                <option value="empresarial">Empresarial</option>
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+        <p class="privacy-note">Seus dados estão seguros conosco. Veja nossa <a href="/politica-de-privacidade" target="_blank">política de privacidade</a>.</p>
+    </section>
+
+    <footer>
+        <p>Site exclusivo para vendas de planos de saúde Bradesco – Revenda Autorizada</p>
+        <p>Informamos que a Bradesco não possui departamento de vendas próprio, utilizando-se para esta negociação, de corretoras prepostas que estão devidamente autorizadas a comercializar, ofertar, intermediar e vender os produtos Bradesco. Pavoni Seguros LTDA, CNPJ: 44.526.154/0001-97, Sediada na Rua Quinze de novembro, 63. Sala 20. Centro. Guarulhos/SP. Brasil. CEP 07011-030, se encontra nesta situação. Devido a esta condição, o objetivo deste site, é tão somente esclarecer e promover a intermediação de vendas para a Bradesco. Caso tenha esse interesse, nos contate por meio de nossa central de vendas telefone: (11) 91319-2092 ou e-mail <a href="mailto:sac@contrateconveniosaude.com.br" rel="noopener noreferrer">sac@contrateconveniosaude.com.br</a>. Por um outro, se já é cliente Bradesco, ligue 0800 722 4433 e fale diretamente no atendimento ao cliente.</p>
+        <p>© 2025 Pavoni Seguros • CNPJ: 44.526.154/0001-97 • Desenvolvido por <a href="#" rel="noopener noreferrer">Agência BMD</a> • <a href="/politica-de-privacidade" target="_blank">Política de Privacidade</a></p>
+    </footer>
+
+    <script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('nav');
+
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            menuToggle.textContent = nav.classList.contains('active') ? '✕' : '☰';
+        });
+    </script>
+</body>
+</html>
